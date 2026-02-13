@@ -1,4 +1,5 @@
 *** Settings ***
+Documentation     Focus: Login, Add to Cart, and View Cart.
 Library           AppiumLibrary
 Test Teardown     Close Application
 
@@ -13,44 +14,51 @@ ${MENU_BUTTON}      accessibility_id=View menu
 ${LOGIN_MENU_ITEM}  accessibility_id=Login Menu Item
 ${USERNAME_FIELD}   id=com.saucelabs.mydemoapp.android:id/nameET
 ${PASSWORD_FIELD}   id=com.saucelabs.mydemoapp.android:id/passwordET
-${LOGIN_SUBMIT}     accessibility_id=Tap to login with given credentials
-${LOGOUT_SIDEBAR}   accessibility_id=Logout Menu Item
-${CONFIRM_LOGOUT}   id=android:id/button1
+${LOGIN_SUBMIT}     id=com.saucelabs.mydemoapp.android:id/loginBtn
+
+${PRODUCT_TITLE}    xpath=(//android.widget.ImageView[@content-desc="Product Image"])[1]
+${ADD_TO_CART}      accessibility_id=Tap to add product to cart
+
+# Use the ID for the text verification, and accessibility_id for the click
+${CART_TEXT_ID}     id=com.saucelabs.mydemoapp.android:id/cartTV
+${CART_BUTTON}      accessibility_id=Displays number of items in your cart
 
 *** Test Cases ***
-Verify User Can Login Then Logout
-    [Documentation]    Full end-to-end flow: Login -> Logout
+Verify User Can Add Product To Cart and View It
+    [Documentation]    Logs in, adds item, and navigates to the Cart screen.
     Open Sauce Labs App
-    Login to Application     bob@example.com    10203040
-    Logout From Application
+    Login to Application      bob@example.com    10203040
+    Add Product To Cart
+    View Shopping Cart
 
 *** Keywords ***
 Open Sauce Labs App
-    Open Application    ${REMOTE_URL}    platformName=${PLATFORM_NAME}    
-    ...    deviceName=${DEVICE_NAME}    app=${APP_PATH}    automationName=UiAutomator2
+    Open Application    ${REMOTE_URL}    platformName=${PLATFORM_NAME}    deviceName=${DEVICE_NAME}    app=${APP_PATH}    automationName=UiAutomator2
 
 Login to Application
     [Arguments]    ${user}    ${pass}
     Wait Until Element Is Visible    ${MENU_BUTTON}    10s
     Click Element    ${MENU_BUTTON}
-    Wait Until Element Is Visible    ${LOGIN_MENU_ITEM}    5s
+    Wait Until Element Is Visible    ${LOGIN_MENU_ITEM}    10s
     Click Element    ${LOGIN_MENU_ITEM}
+    Wait Until Page Contains Element    ${USERNAME_FIELD}    15s
     Input Text       ${USERNAME_FIELD}    ${user}
     Input Text       ${PASSWORD_FIELD}    ${pass}
     Click Element    ${LOGIN_SUBMIT}
 
-Logout From Application
-    # 1. Wait a moment for the screen to stabilize after login
-    Sleep    2s
+Add Product To Cart
+    Wait Until Element Is Visible    ${PRODUCT_TITLE}    15s
+    Click Element    ${PRODUCT_TITLE}
+    Wait Until Element Is Visible    ${ADD_TO_CART}    10s
+    Click Element    ${ADD_TO_CART}
     
-    # 2. Force Appium to re-locate the menu button on the NEW screen
-    Wait Until Element Is Visible    ${MENU_BUTTON}    10s
-    Click Element    ${MENU_BUTTON}
-    
-    # 3. Select Logout
-    Wait Until Element Is Visible    ${LOGOUT_SIDEBAR}    5s
-    Click Element    ${LOGOUT_SIDEBAR}
-    
-    # 4. Handle the Android System Dialog
-    Wait Until Element Is Visible    ${CONFIRM_LOGOUT}    5s
-    Click Element    ${CONFIRM_LOGOUT}
+    # Verify the text '1' appears on the badge
+    Wait Until Keyword Succeeds    7s    1s    Element Text Should Be    ${CART_TEXT_ID}    1
+
+View Shopping Cart
+    [Documentation]    The final step to view the cart contents.
+    Click Element    ${CART_BUTTON}
+    # Verify we are on the 'My Cart' page by checking for the screen title
+    Wait Until Page Contains    My Cart    10s
+    # Optional: Verify the item is in the list
+    Page Should Contain Text    Sauce Labs Backpack

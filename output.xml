@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.1 (Python 3.14.3 on win32)" generated="2026-02-13T14:17:12.911996" rpa="false" schemaversion="5">
+<robot generator="Robot 7.4.1 (Python 3.14.3 on win32)" generated="2026-02-13T15:05:26.366225" rpa="false" schemaversion="5">
 <suite id="s1" name="Login" source="C:\Users\Rea\Develop\FE-Mobile-Automation\login.robot">
-<test id="s1-t1" name="Verify User Can Login Then Logout" line="21">
+<test id="s1-t1" name="Verify User Can Add Product To Cart and View It" line="27">
 <kw name="Open Sauce Labs App">
 <kw name="Open Application" owner="AppiumLibrary">
 <arg>${REMOTE_URL}</arg>
@@ -15,117 +15,147 @@ Please check https://appium.io/docs/en/2.19/guides/caps/
 | *Option*            | *Man.* | *Description*     |
 | remote_url          | Yes    | Appium server url |
 | alias               | No     | alias             |</doc>
-<status status="PASS" start="2026-02-13T14:17:13.192836" elapsed="9.504840"/>
+<status status="PASS" start="2026-02-13T15:05:26.597396" elapsed="7.961836"/>
 </kw>
-<status status="PASS" start="2026-02-13T14:17:13.192211" elapsed="9.505845"/>
+<status status="PASS" start="2026-02-13T15:05:26.596756" elapsed="7.962838"/>
 </kw>
 <kw name="Login to Application">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
 <arg>${MENU_BUTTON}</arg>
 <arg>10s</arg>
 <doc>Waits until the element specified by the ``locator`` is visible.</doc>
-<status status="PASS" start="2026-02-13T14:17:22.699750" elapsed="2.898129"/>
+<status status="PASS" start="2026-02-13T15:05:34.564161" elapsed="2.984370"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2026-02-13T14:17:25.599374" level="INFO">Clicking element 'accessibility_id=View menu'.</msg>
+<msg time="2026-02-13T15:05:37.549850" level="INFO">Clicking element 'accessibility_id=View menu'.</msg>
 <arg>${MENU_BUTTON}</arg>
 <doc>Clicks the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-02-13T14:17:25.598061" elapsed="0.307567"/>
+<status status="PASS" start="2026-02-13T15:05:37.548719" elapsed="0.292702"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
 <arg>${LOGIN_MENU_ITEM}</arg>
-<arg>5s</arg>
+<arg>10s</arg>
 <doc>Waits until the element specified by the ``locator`` is visible.</doc>
-<status status="PASS" start="2026-02-13T14:17:25.905879" elapsed="1.087797"/>
+<status status="PASS" start="2026-02-13T15:05:37.841691" elapsed="0.957589"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2026-02-13T14:17:26.995418" level="INFO">Clicking element 'accessibility_id=Login Menu Item'.</msg>
+<msg time="2026-02-13T15:05:38.800608" level="INFO">Clicking element 'accessibility_id=Login Menu Item'.</msg>
 <arg>${LOGIN_MENU_ITEM}</arg>
 <doc>Clicks the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-02-13T14:17:26.993924" elapsed="0.207474"/>
+<status status="PASS" start="2026-02-13T15:05:38.799449" elapsed="0.272830"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="AppiumLibrary">
+<msg time="2026-02-13T15:05:40.304883" level="INFO">criteria is com.saucelabs.mydemoapp.android:id/nameET
+criteria is com.saucelabs.mydemoapp.android:id/nameET</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>15s</arg>
+<doc>Waits until the element specified by the ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-02-13T15:05:39.072584" elapsed="1.232399"/>
 </kw>
 <kw name="Input Text" owner="AppiumLibrary">
-<msg time="2026-02-13T14:17:27.203299" level="INFO">Typing text 'bob@example.com' into text field 'id=com.saucelabs.mydemoapp.android:id/nameET'</msg>
-<msg time="2026-02-13T14:17:28.255160" level="INFO">criteria is com.saucelabs.mydemoapp.android:id/nameET</msg>
+<msg time="2026-02-13T15:05:40.306106" level="INFO">Typing text 'bob@example.com' into text field 'id=com.saucelabs.mydemoapp.android:id/nameET'</msg>
+<msg time="2026-02-13T15:05:40.393912" level="INFO">criteria is com.saucelabs.mydemoapp.android:id/nameET</msg>
 <arg>${USERNAME_FIELD}</arg>
 <arg>${user}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-02-13T14:17:27.201634" elapsed="1.053632"/>
+<status status="PASS" start="2026-02-13T15:05:40.305128" elapsed="0.088939"/>
 </kw>
 <kw name="Input Text" owner="AppiumLibrary">
-<msg time="2026-02-13T14:17:28.256478" level="INFO">Typing text '10203040' into text field 'id=com.saucelabs.mydemoapp.android:id/passwordET'</msg>
-<msg time="2026-02-13T14:17:28.797154" level="INFO">criteria is com.saucelabs.mydemoapp.android:id/passwordET</msg>
+<msg time="2026-02-13T15:05:40.395656" level="INFO">Typing text '10203040' into text field 'id=com.saucelabs.mydemoapp.android:id/passwordET'</msg>
+<msg time="2026-02-13T15:05:40.916009" level="INFO">criteria is com.saucelabs.mydemoapp.android:id/passwordET</msg>
 <arg>${PASSWORD_FIELD}</arg>
 <arg>${pass}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-02-13T14:17:28.255400" elapsed="0.541872"/>
+<status status="PASS" start="2026-02-13T15:05:40.394228" elapsed="0.521892"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2026-02-13T14:17:28.798513" level="INFO">Clicking element 'accessibility_id=Tap to login with given credentials'.</msg>
+<msg time="2026-02-13T15:05:40.917283" level="INFO">Clicking element 'id=com.saucelabs.mydemoapp.android:id/loginBtn'.</msg>
+<msg time="2026-02-13T15:05:41.505964" level="INFO">criteria is com.saucelabs.mydemoapp.android:id/loginBtn</msg>
 <arg>${LOGIN_SUBMIT}</arg>
 <doc>Clicks the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-02-13T14:17:28.797460" elapsed="0.543963"/>
+<status status="PASS" start="2026-02-13T15:05:40.916296" elapsed="0.589775"/>
 </kw>
 <arg>bob@example.com</arg>
 <arg>10203040</arg>
-<status status="PASS" start="2026-02-13T14:17:22.698948" elapsed="6.642611"/>
+<status status="PASS" start="2026-02-13T15:05:34.562866" elapsed="6.943293"/>
 </kw>
-<kw name="Logout From Application">
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2026-02-13T14:17:31.342845" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-02-13T14:17:29.342167" elapsed="2.000815"/>
+<kw name="Add Product To Cart">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-02-13T15:05:43.512419" level="INFO">xpath criteria: (//android.widget.ImageView[@content-desc="Product Image"])[1]</msg>
+<arg>${PRODUCT_TITLE}</arg>
+<arg>15s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-02-13T15:05:41.506847" elapsed="2.005700"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-02-13T15:05:43.514927" level="INFO">Clicking element 'xpath=(//android.widget.ImageView[@content-desc="Product Image"])[1]'.</msg>
+<msg time="2026-02-13T15:05:45.020446" level="INFO">xpath criteria: (//android.widget.ImageView[@content-desc="Product Image"])[1]</msg>
+<arg>${PRODUCT_TITLE}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-02-13T15:05:43.512785" elapsed="1.507777"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<arg>${MENU_BUTTON}</arg>
+<arg>${ADD_TO_CART}</arg>
 <arg>10s</arg>
 <doc>Waits until the element specified by the ``locator`` is visible.</doc>
-<status status="PASS" start="2026-02-13T14:17:31.343170" elapsed="0.072582"/>
+<status status="PASS" start="2026-02-13T15:05:45.020703" elapsed="0.047723"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2026-02-13T14:17:31.417125" level="INFO">Clicking element 'accessibility_id=View menu'.</msg>
-<arg>${MENU_BUTTON}</arg>
+<msg time="2026-02-13T15:05:45.069594" level="INFO">Clicking element 'accessibility_id=Tap to add product to cart'.</msg>
+<arg>${ADD_TO_CART}</arg>
 <doc>Clicks the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-02-13T14:17:31.415947" elapsed="1.031767"/>
+<status status="PASS" start="2026-02-13T15:05:45.068614" elapsed="0.726486"/>
 </kw>
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<arg>${LOGOUT_SIDEBAR}</arg>
-<arg>5s</arg>
-<doc>Waits until the element specified by the ``locator`` is visible.</doc>
-<status status="PASS" start="2026-02-13T14:17:32.447879" elapsed="0.060561"/>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Element Text Should Be" owner="AppiumLibrary">
+<msg time="2026-02-13T15:05:45.797824" level="INFO">Verifying element 'id=com.saucelabs.mydemoapp.android:id/cartTV' contains exactly text '1'.</msg>
+<msg time="2026-02-13T15:05:45.971757" level="INFO">criteria is com.saucelabs.mydemoapp.android:id/cartTV</msg>
+<arg>${CART_TEXT_ID}</arg>
+<arg>1</arg>
+<doc>Verifies that the element identified by ``locator`` contains the exact text ``expected``.</doc>
+<status status="PASS" start="2026-02-13T15:05:45.796204" elapsed="0.175711"/>
 </kw>
+<arg>7s</arg>
+<arg>1s</arg>
+<arg>Element Text Should Be</arg>
+<arg>${CART_TEXT_ID}</arg>
+<arg>1</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-02-13T15:05:45.795394" elapsed="0.176628"/>
+</kw>
+<status status="PASS" start="2026-02-13T15:05:41.506558" elapsed="4.465565"/>
+</kw>
+<kw name="View Shopping Cart">
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2026-02-13T14:17:32.509654" level="INFO">Clicking element 'accessibility_id=Logout Menu Item'.</msg>
-<arg>${LOGOUT_SIDEBAR}</arg>
+<msg time="2026-02-13T15:05:45.975271" level="INFO">Clicking element 'accessibility_id=Displays number of items in your cart'.</msg>
+<arg>${CART_BUTTON}</arg>
 <doc>Clicks the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-02-13T14:17:32.508615" elapsed="0.151411"/>
+<status status="PASS" start="2026-02-13T15:05:45.973205" elapsed="0.352619"/>
 </kw>
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2026-02-13T14:17:33.478620" level="INFO">criteria is android:id/button1
-criteria is android:id/button1</msg>
-<arg>${CONFIRM_LOGOUT}</arg>
-<arg>5s</arg>
-<doc>Waits until the element specified by the ``locator`` is visible.</doc>
-<status status="PASS" start="2026-02-13T14:17:32.660218" elapsed="0.818529"/>
+<kw name="Wait Until Page Contains" owner="AppiumLibrary">
+<arg>My Cart</arg>
+<arg>10s</arg>
+<doc>Waits until the ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-02-13T15:05:46.326142" elapsed="1.065032"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2026-02-13T14:17:33.479889" level="INFO">Clicking element 'id=android:id/button1'.</msg>
-<msg time="2026-02-13T14:17:33.580021" level="INFO">criteria is android:id/button1</msg>
-<arg>${CONFIRM_LOGOUT}</arg>
-<doc>Clicks the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-02-13T14:17:33.478891" elapsed="0.101241"/>
+<kw name="Page Should Contain Text" owner="AppiumLibrary">
+<msg time="2026-02-13T15:05:47.447123" level="INFO">Current page contains text 'Sauce Labs Backpack'.</msg>
+<arg>Sauce Labs Backpack</arg>
+<doc>Verifies that the current page contains ``text``.</doc>
+<status status="PASS" start="2026-02-13T15:05:47.391383" elapsed="0.055822"/>
 </kw>
-<status status="PASS" start="2026-02-13T14:17:29.341939" elapsed="4.238299"/>
+<doc>The final step to view the cart contents.</doc>
+<status status="PASS" start="2026-02-13T15:05:45.972677" elapsed="1.474596"/>
 </kw>
 <kw name="Close Application" owner="AppiumLibrary" type="TEARDOWN">
 <doc>Closes the current application and the webdriver session.</doc>
-<status status="PASS" start="2026-02-13T14:17:33.580645" elapsed="1.874456"/>
+<status status="PASS" start="2026-02-13T15:05:47.447611" elapsed="0.818736"/>
 </kw>
-<doc>Full end-to-end flow: Login -&gt; Logout</doc>
-<status status="PASS" start="2026-02-13T14:17:13.191179" elapsed="22.264317"/>
+<doc>Logs in, adds item, and navigates to the Cart screen.</doc>
+<status status="PASS" start="2026-02-13T15:05:26.595934" elapsed="21.670809"/>
 </test>
-<status status="PASS" start="2026-02-13T14:17:12.913788" elapsed="22.543314"/>
+<doc>Focus: Login, Add to Cart, and View Cart.</doc>
+<status status="PASS" start="2026-02-13T15:05:26.367414" elapsed="21.900891"/>
 </suite>
 <statistics>
 <total>
