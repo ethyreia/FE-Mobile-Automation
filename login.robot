@@ -8,49 +8,49 @@ ${PLATFORM_NAME}   Android
 ${DEVICE_NAME}     emulator-5554
 ${APP_PATH}        ${CURDIR}/Application/mydemoapp.apk
 
-${MENU_BUTTON}    accessibility_id=View menu
-${LOGIN_BUTTON}   accessibility_id=Login Menu Item
-${USERNAME_FIELD}  id=com.saucelabs.mydemoapp.android:id/nameRL
-${PASSWORD_FIELD}  id=com.saucelabs.mydemoapp.android:id/passwordRL
-${username}  xpath=//android.widget.RelativeLayout[@resource-id="com.saucelabs.mydemoapp.android:id/nameRL"]
-${password}  xpath=//android.widget.RelativeLayout[@resource-id="com.saucelabs.mydemoapp.android:id/passwordRL"]
-${submit_button}  accessibility_id=Tap to login with given credentials
+# Locators
+${MENU_BUTTON}      accessibility_id=View menu
+${LOGIN_MENU_ITEM}  accessibility_id=Login Menu Item
+${USERNAME_FIELD}   id=com.saucelabs.mydemoapp.android:id/nameET
+${PASSWORD_FIELD}   id=com.saucelabs.mydemoapp.android:id/passwordET
+${LOGIN_SUBMIT}     accessibility_id=Tap to login with given credentials
+${LOGOUT_SIDEBAR}   accessibility_id=Logout Menu Item
+${CONFIRM_LOGOUT}   id=android:id/button1
 
 *** Test Cases ***
-Verify User Can Login Successfully
-    [Documentation]    Test the full login flow with valid credentials
-    Launch App On Pixel 9
-    Login To App       bob@example.com    10203040
-    # This checks if we reached the catalog page
-    Wait Until Page Contains    Products    15s
+Verify User Can Login Then Logout
+    [Documentation]    Full end-to-end flow: Login -> Logout
+    Open Sauce Labs App
+    Login to Application     bob@example.com    10203040
+    Logout From Application
 
 *** Keywords ***
-Launch App On Pixel 9
-    Open Application    ${REMOTE_URL}
-    ...                 platformName=${PLATFORM_NAME}
-    ...                 deviceName=${DEVICE_NAME}
-    ...                 app=${APP_PATH}
-    ...                 automationName=UiAutomator2
-    ...                 newCommandTimeout=2500
-    ...                 appWaitDuration=30000
+Open Sauce Labs App
+    Open Application    ${REMOTE_URL}    platformName=${PLATFORM_NAME}    
+    ...    deviceName=${DEVICE_NAME}    app=${APP_PATH}    automationName=UiAutomator2
 
-Login To App
-    [Arguments]    ${username}    ${password}
+Login to Application
+    [Arguments]    ${user}    ${pass}
+    Wait Until Element Is Visible    ${MENU_BUTTON}    10s
+    Click Element    ${MENU_BUTTON}
+    Wait Until Element Is Visible    ${LOGIN_MENU_ITEM}    5s
+    Click Element    ${LOGIN_MENU_ITEM}
+    Input Text       ${USERNAME_FIELD}    ${user}
+    Input Text       ${PASSWORD_FIELD}    ${pass}
+    Click Element    ${LOGIN_SUBMIT}
+
+Logout From Application
+    # 1. Wait a moment for the screen to stabilize after login
+    Sleep    2s
     
-    # Strategy: Find by description (content-desc)
+    # 2. Force Appium to re-locate the menu button on the NEW screen
     Wait Until Element Is Visible    ${MENU_BUTTON}    10s
     Click Element    ${MENU_BUTTON}
     
-    # 2. Select Login from the menu
-    Wait Until Element Is Visible    ${LOGIN_BUTTON}    10s
-    Click Element    ${LOGIN_BUTTON}
-
-    # 3. Enter Credentials
-    Wait Until Element Is Visible    ${USERNAME_FIELD}    10s
-    Click Element    ${USERNAME_FIELD}
-    Input Text Into Current Element    ${username}
-    Click Element    ${PASSWORD_FIELD}
-    Input Text Into Current Element    ${password}
+    # 3. Select Logout
+    Wait Until Element Is Visible    ${LOGOUT_SIDEBAR}    5s
+    Click Element    ${LOGOUT_SIDEBAR}
     
-    # 4. Submit
-    Click Element    ${submit_button}
+    # 4. Handle the Android System Dialog
+    Wait Until Element Is Visible    ${CONFIRM_LOGOUT}    5s
+    Click Element    ${CONFIRM_LOGOUT}

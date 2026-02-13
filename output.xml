@@ -1,108 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.1 (Python 3.14.3 on win32)" generated="2026-02-11T23:11:18.504356" rpa="false" schemaversion="5">
+<robot generator="Robot 7.4.1 (Python 3.14.3 on win32)" generated="2026-02-13T14:17:12.911996" rpa="false" schemaversion="5">
 <suite id="s1" name="Login" source="C:\Users\Rea\Develop\FE-Mobile-Automation\login.robot">
-<test id="s1-t1" name="Verify User Can Login Successfully" line="20">
-<kw name="Launch App On Pixel 9">
+<test id="s1-t1" name="Verify User Can Login Then Logout" line="21">
+<kw name="Open Sauce Labs App">
 <kw name="Open Application" owner="AppiumLibrary">
 <arg>${REMOTE_URL}</arg>
 <arg>platformName=${PLATFORM_NAME}</arg>
 <arg>deviceName=${DEVICE_NAME}</arg>
 <arg>app=${APP_PATH}</arg>
 <arg>automationName=UiAutomator2</arg>
-<arg>newCommandTimeout=2500</arg>
-<arg>appWaitDuration=30000</arg>
 <doc>Opens a new application to the given Appium server.
 Capabilities of appium server, Android and iOS,
 Please check https://appium.io/docs/en/2.19/guides/caps/
 | *Option*            | *Man.* | *Description*     |
 | remote_url          | Yes    | Appium server url |
 | alias               | No     | alias             |</doc>
-<status status="PASS" start="2026-02-11T23:11:18.718206" elapsed="4.737936"/>
+<status status="PASS" start="2026-02-13T14:17:13.192836" elapsed="9.504840"/>
 </kw>
-<status status="PASS" start="2026-02-11T23:11:18.717715" elapsed="4.738637"/>
+<status status="PASS" start="2026-02-13T14:17:13.192211" elapsed="9.505845"/>
 </kw>
-<kw name="Login To App">
+<kw name="Login to Application">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
 <arg>${MENU_BUTTON}</arg>
 <arg>10s</arg>
 <doc>Waits until the element specified by the ``locator`` is visible.</doc>
-<status status="PASS" start="2026-02-11T23:11:23.457181" elapsed="1.836142"/>
+<status status="PASS" start="2026-02-13T14:17:22.699750" elapsed="2.898129"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2026-02-11T23:11:25.294431" level="INFO">Clicking element 'accessibility_id=View menu'.</msg>
+<msg time="2026-02-13T14:17:25.599374" level="INFO">Clicking element 'accessibility_id=View menu'.</msg>
 <arg>${MENU_BUTTON}</arg>
 <doc>Clicks the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-02-11T23:11:25.293481" elapsed="1.121700"/>
+<status status="PASS" start="2026-02-13T14:17:25.598061" elapsed="0.307567"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<arg>${LOGIN_BUTTON}</arg>
-<arg>10s</arg>
+<arg>${LOGIN_MENU_ITEM}</arg>
+<arg>5s</arg>
 <doc>Waits until the element specified by the ``locator`` is visible.</doc>
-<status status="PASS" start="2026-02-11T23:11:26.415325" elapsed="0.074926"/>
+<status status="PASS" start="2026-02-13T14:17:25.905879" elapsed="1.087797"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2026-02-11T23:11:26.491223" level="INFO">Clicking element 'accessibility_id=Login Menu Item'.</msg>
-<arg>${LOGIN_BUTTON}</arg>
+<msg time="2026-02-13T14:17:26.995418" level="INFO">Clicking element 'accessibility_id=Login Menu Item'.</msg>
+<arg>${LOGIN_MENU_ITEM}</arg>
 <doc>Clicks the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-02-11T23:11:26.490395" elapsed="0.947170"/>
+<status status="PASS" start="2026-02-13T14:17:26.993924" elapsed="0.207474"/>
 </kw>
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2026-02-11T23:11:27.479525" level="INFO">criteria is com.saucelabs.mydemoapp.android:id/nameRL</msg>
+<kw name="Input Text" owner="AppiumLibrary">
+<msg time="2026-02-13T14:17:27.203299" level="INFO">Typing text 'bob@example.com' into text field 'id=com.saucelabs.mydemoapp.android:id/nameET'</msg>
+<msg time="2026-02-13T14:17:28.255160" level="INFO">criteria is com.saucelabs.mydemoapp.android:id/nameET</msg>
 <arg>${USERNAME_FIELD}</arg>
-<arg>10s</arg>
-<doc>Waits until the element specified by the ``locator`` is visible.</doc>
-<status status="PASS" start="2026-02-11T23:11:27.437717" elapsed="0.041898"/>
+<arg>${user}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-02-13T14:17:27.201634" elapsed="1.053632"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2026-02-11T23:11:27.480769" level="INFO">Clicking element 'id=com.saucelabs.mydemoapp.android:id/nameRL'.</msg>
-<msg time="2026-02-11T23:11:27.598316" level="INFO">criteria is com.saucelabs.mydemoapp.android:id/nameRL</msg>
-<arg>${USERNAME_FIELD}</arg>
-<doc>Clicks the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-02-11T23:11:27.479747" elapsed="0.118669"/>
-</kw>
-<kw name="Input Text Into Current Element" owner="AppiumLibrary">
-<msg time="2026-02-11T23:11:27.599450" level="INFO">Typing text 'bob@example.com' into current text field</msg>
-<arg>${username}</arg>
-<doc>Types the given ``text`` into the currently selected text field.</doc>
-<status status="PASS" start="2026-02-11T23:11:27.598583" elapsed="1.391217"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2026-02-11T23:11:28.990822" level="INFO">Clicking element 'id=com.saucelabs.mydemoapp.android:id/passwordRL'.</msg>
-<msg time="2026-02-11T23:11:30.604566" level="INFO">criteria is com.saucelabs.mydemoapp.android:id/passwordRL</msg>
+<kw name="Input Text" owner="AppiumLibrary">
+<msg time="2026-02-13T14:17:28.256478" level="INFO">Typing text '10203040' into text field 'id=com.saucelabs.mydemoapp.android:id/passwordET'</msg>
+<msg time="2026-02-13T14:17:28.797154" level="INFO">criteria is com.saucelabs.mydemoapp.android:id/passwordET</msg>
 <arg>${PASSWORD_FIELD}</arg>
-<doc>Clicks the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-02-11T23:11:28.989989" elapsed="1.614655"/>
-</kw>
-<kw name="Input Text Into Current Element" owner="AppiumLibrary">
-<msg time="2026-02-11T23:11:30.605635" level="INFO">Typing text '10203040' into current text field</msg>
-<arg>${password}</arg>
-<doc>Types the given ``text`` into the currently selected text field.</doc>
-<status status="PASS" start="2026-02-11T23:11:30.604764" elapsed="0.145332"/>
+<arg>${pass}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-02-13T14:17:28.255400" elapsed="0.541872"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2026-02-11T23:11:30.751065" level="INFO">Clicking element 'accessibility_id=Tap to login with given credentials'.</msg>
-<arg>${submit_button}</arg>
+<msg time="2026-02-13T14:17:28.798513" level="INFO">Clicking element 'accessibility_id=Tap to login with given credentials'.</msg>
+<arg>${LOGIN_SUBMIT}</arg>
 <doc>Clicks the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-02-11T23:11:30.750260" elapsed="0.633116"/>
+<status status="PASS" start="2026-02-13T14:17:28.797460" elapsed="0.543963"/>
 </kw>
 <arg>bob@example.com</arg>
 <arg>10203040</arg>
-<status status="PASS" start="2026-02-11T23:11:23.456782" elapsed="7.926725"/>
+<status status="PASS" start="2026-02-13T14:17:22.698948" elapsed="6.642611"/>
 </kw>
-<kw name="Wait Until Page Contains" owner="AppiumLibrary">
-<arg>Products</arg>
-<arg>15s</arg>
-<doc>Waits until the ``text`` appears on the current page.</doc>
-<status status="PASS" start="2026-02-11T23:11:31.383718" elapsed="0.789972"/>
+<kw name="Logout From Application">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-02-13T14:17:31.342845" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-02-13T14:17:29.342167" elapsed="2.000815"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<arg>${MENU_BUTTON}</arg>
+<arg>10s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-02-13T14:17:31.343170" elapsed="0.072582"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-02-13T14:17:31.417125" level="INFO">Clicking element 'accessibility_id=View menu'.</msg>
+<arg>${MENU_BUTTON}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-02-13T14:17:31.415947" elapsed="1.031767"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<arg>${LOGOUT_SIDEBAR}</arg>
+<arg>5s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-02-13T14:17:32.447879" elapsed="0.060561"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-02-13T14:17:32.509654" level="INFO">Clicking element 'accessibility_id=Logout Menu Item'.</msg>
+<arg>${LOGOUT_SIDEBAR}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-02-13T14:17:32.508615" elapsed="0.151411"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2026-02-13T14:17:33.478620" level="INFO">criteria is android:id/button1
+criteria is android:id/button1</msg>
+<arg>${CONFIRM_LOGOUT}</arg>
+<arg>5s</arg>
+<doc>Waits until the element specified by the ``locator`` is visible.</doc>
+<status status="PASS" start="2026-02-13T14:17:32.660218" elapsed="0.818529"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2026-02-13T14:17:33.479889" level="INFO">Clicking element 'id=android:id/button1'.</msg>
+<msg time="2026-02-13T14:17:33.580021" level="INFO">criteria is android:id/button1</msg>
+<arg>${CONFIRM_LOGOUT}</arg>
+<doc>Clicks the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-02-13T14:17:33.478891" elapsed="0.101241"/>
+</kw>
+<status status="PASS" start="2026-02-13T14:17:29.341939" elapsed="4.238299"/>
 </kw>
 <kw name="Close Application" owner="AppiumLibrary" type="TEARDOWN">
 <doc>Closes the current application and the webdriver session.</doc>
-<status status="PASS" start="2026-02-11T23:11:32.174090" elapsed="0.787088"/>
+<status status="PASS" start="2026-02-13T14:17:33.580645" elapsed="1.874456"/>
 </kw>
-<doc>Test the full login flow with valid credentials</doc>
-<status status="PASS" start="2026-02-11T23:11:18.717148" elapsed="14.244224"/>
+<doc>Full end-to-end flow: Login -&gt; Logout</doc>
+<status status="PASS" start="2026-02-13T14:17:13.191179" elapsed="22.264317"/>
 </test>
-<status status="PASS" start="2026-02-11T23:11:18.505610" elapsed="14.456565"/>
+<status status="PASS" start="2026-02-13T14:17:12.913788" elapsed="22.543314"/>
 </suite>
 <statistics>
 <total>
